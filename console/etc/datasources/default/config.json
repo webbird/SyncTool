@@ -1,0 +1,21 @@
+{
+    "driver": "LDAP\\AD",
+    "defaults": {
+        "loglevel": "1",
+        "idfield": "distinguishedname",
+        "sidfield": "objectsid",
+        "namefield": "cn",
+        "modfield": "whenchanged",
+        "timelimit": "600"
+    },
+    "connection": {
+        "domain": "stmlf",
+        "basedn": "dc=stmlf,dc=local",
+        "user": "dxadm",
+        "port": "",
+        "sslversion": "3",
+        "password": "Materna.1",
+        "host": "stmelf-dc",
+        "debug": "0"
+    }
+}
