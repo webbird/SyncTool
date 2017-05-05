@@ -1,5 +1,5 @@
         </div>
-<?php include 'newconnectionpopup.tpl'; include 'datasource_popup.tpl'; ?>
+<?php include 'flowpopup.tpl'; include 'datasource_popup.tpl'; ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 

@@ -21,23 +21,20 @@ class datasource
      * @access public
      * @return
      **/
-    public function exec($request, $response, $args)
+    public function edit($request, $response, $args)
     {
         $this->c['source_type'] = null;
-        if($args['param']!=='create')
-        {
-            $cfg = $this->loadConfig($args['param']);
-        }
-        $this->c['source_name'] = $args['param'];
+        $cfg = $this->loadConfig($args['param2']);
+        $this->c['source_name'] = $args['param2'];
 
         // alias
         $c =& $this->c;
 
         // set form action
-        $this->f->setAttr('action','/datasource/save/'.$args['param']);
+        $this->f->setAttr('action','/datasource/save/'.$args['param2']);
 
         include $this->c->get('settings')['template_path'].'/datasource.tpl';
-    }   // end function exec()
+    }   // end function edit()
 
     /**
      *
@@ -88,57 +85,20 @@ class datasource
             }
             if($changes>0)
             {
-echo "<textarea style=\"width:100%;height:200px;color:#000;background-color:#fff;\">";
-print_r($cfg);
-echo "</textarea>";
+                $path = $this->c->get('settings')['synchronizer']['config_path'].'/'
+                      . 'datasources/'
+                      . $args['param2'].'/'
+                      . 'config.json'
+                      ;
+                $newdata = json_encode($cfg,JSON_PRETTY_PRINT);
+                if(strlen($newdata))
+                   file_put_contents($path, $newdata);
             }
         }
-/*
-Array
-(
-    [loglevel] => 0 - off
-    [idfield] => distinguishedname
-    [sidfield] => objectsid
-    [namefield] => cn
-    [modfield] => whenchanged
-    [username] => fasd
-    [password] => asdf
-    [hostname] => asdf
-    [require_tls] => on
-    [sslversion] => 1
-    [timelimit] => 600
-    [domain] => asdf
-    [basedn] => asdf
-)
-
-Array
-(
-    [driver] => LDAP\AD
-    [defaults] => Array
-        (
-            [loglevel] => 1
-            [idfield] => distinguishedname
-            [sidfield] => objectsid
-            [namefield] => cn
-            [modfield] => whenchanged
-            [timelimit] => 600
-        )
-
-    [connection] => Array
-        (
-            [domain] => stmlf
-            [basedn] => dc=stmlf,dc=local
-            [user] => dxadm
-            [port] =>
-            [sslversion] => sslv3
-            [password] => Materna.1
-            [host] => stmelf-dc
-            [debug] => 0
-        )
-
-)
-
-*/
+        $this->c['message'] = $this->c['trans']->t('Your changes where saved.');
+        $this->c['redirect_url'] = $this->c->get('settings')['uri'].'/datasource/edit/'.$args['param2'];
+        $c =& $this->c;
+        include $this->c->get('settings')['template_path'].'/success.tpl';
     }
 
     /**
@@ -172,6 +132,9 @@ Array
             $ll = array_flip(self::$loglevels)[$cfg['defaults']['loglevel']];
             if($ll)
                 $this->f->getElement('loglevel')->setValue($ll);
+            // password repeat
+            if($this->f->hasElement('password2'))
+                $this->f->getElement('password2')->setValue($cfg['connection']['password']);
         } else {
             throw new \Exception($this->c->get('trans')->t('No such datasource'));
         }

@@ -1,8 +1,5 @@
 (function(){
-    $('button#backtohome').unbind('click').on('click', function(e) {
-        e.preventDefault();
-        window.location.href='http://localhost:8080';
-    });
+    // convert fieldsets to tabs
     $('form').fieldset_to_tabs();
     
     // close any modals before opening a new one
@@ -12,7 +9,7 @@
         }
     });
 
-    // trigger primary button on enter
+    // trigger primary button in modal on enter
     $("body").on("shown.bs.modal", ".modal", function() {
         $(this).keypress(function(e) {
             if (e.which == "13") {
@@ -26,9 +23,10 @@
     	event.stopPropagation();
     });
 
+    // select datasource from dropdown
     $('ul.dropdown-menu select option').on('click', function(event) {
         var target = $(event.target).text();
-        window.location.href = 'http://localhost:8080/datasource/'+target;
+        window.location.href = 'http://localhost:8080/datasource/edit/'+target;
     });
 
     $('#datasource').on('shown.bs.modal', function (e) {

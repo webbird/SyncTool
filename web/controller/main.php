@@ -21,17 +21,17 @@ class main {
         $controller = isset($args['controller'])
                     ? '\\SyncTool\\'.$args['controller']
                     : null;
-        $this->c['route_name'] = $controller;
+        $this->c['route_name'] = $args['controller'];
 
         $action     = isset($args['param2'])
                     ? $args['param']
                     : 'exec';
 
+        // list of available datasources (for navigation)
+        $this->c['datasources'] = \SyncTool\datasource::list($this->c);
+
         // alias
         $c =& $this->c;
-
-        // list of available datasources (for navigation)
-        $datasources = \SyncTool\datasource::list($c);
 
         if($controller) {
             $c = new $controller($this->c);

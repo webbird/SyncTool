@@ -1,7 +1,4 @@
 <?php include 'header.tpl'; ?>
-    <div class="container-fluid" role="main"><br /><br /><br />
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
@@ -46,7 +43,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-<?php include 'newconnectionpopup.tpl'; include 'datasource_popup.tpl'; include 'footer.tpl'; ?>
+<?php include 'footer.tpl'; ?>

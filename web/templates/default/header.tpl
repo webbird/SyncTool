@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+<?php if($c->has('redirect_url')): ?>
+    <meta http-equiv="refresh" content="2;URL=<?php echo $c->get('redirect_url') ?>" />
+<?php endif; ?>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="favicon.ico" />
     <title>SyncTool</title>
 
     <!-- Bootstrap -->
@@ -27,6 +30,6 @@
   </head>
   <body class="fuelux">
   <?php include 'navbar.tpl'; ?>
-      <div class="container-fluid" role="main"><br /><br /><br />
+      <div class="container-fluid" role="main">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

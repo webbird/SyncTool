@@ -17,7 +17,7 @@ return [
 
         // I18n
         'translations_path' => __DIR__ . '/../translations/',
-        'lang' => 'de',
+        'lang' => 'en',
 
         // Synchronizer paths
         'synchronizer' => [
@@ -27,6 +27,9 @@ return [
             'default_path' => 'default',
             'source_conf' => 'source.json',
             'target_conf' => 'target.json',
-        ]
+        ],
+
+        // basics
+        'uri' => 'http://localhost:8080',
     ]
 ];

@@ -17,7 +17,8 @@ class help {
      **/
     public function exec($request, $response, $args)
     {
+        $c =& $this->c;
         include $this->c->get('settings')['template_path'].'/help.tpl';
-    }   // end function run()
+    }   // end function exec()
     
 }

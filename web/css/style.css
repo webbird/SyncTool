@@ -1,1 +1,2 @@
+div.container-fluid{margin-top:80px;}
 form div.form-group.has-error.has-danger input:not([type="hidden"], [type="submit"], [type="reset"], button){border:1px solid #c00;}
