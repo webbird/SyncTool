@@ -9,13 +9,13 @@
         "timelimit": "600"
     },
     "connection": {
-        "domain": "stmlf",
-        "basedn": "dc=stmlf,dc=local",
-        "user": "dxadm",
+        "domain": "<domain>",
+        "basedn": "<basedn>",
+        "user": "<user>",
         "port": "",
         "sslversion": "3",
-        "password": "Materna.1",
-        "host": "stmelf-dc",
+        "password": "<pass>",
+        "host": "<host>",
         "debug": "0"
     }
 }
